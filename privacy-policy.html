@@ -49,6 +49,8 @@
       <h2>3) Summary (Key Points)</h2>
       <ul>
         <li>The App primarily stores your finance data <strong>on your device</strong> and, if you enable it, <strong>in your Google Drive account</strong>.</li>
+        <li><strong>If you enable Google Drive backup/sync, backup files are encrypted on your device before upload</strong>; Google Drive receives only encrypted backups.</li>
+        <li>Restoring an encrypted backup requires a <strong>backup passphrase</strong> you set; <strong>we do not know, store, or have access</strong> to this passphrase.</li>
         <li>The App uses <strong>analytics and diagnostics</strong> (e.g., Firebase Analytics and Crashlytics) to improve stability and user experience.</li>
         <li>The App may use <strong>remote configuration / A/B testing</strong> services (e.g., Firebase Remote Config / A/B Testing) to evaluate features and improve the App.</li>
         <li>The App may support <strong>Google Play subscriptions</strong> in the future; Google processes payments.</li>
@@ -114,6 +116,36 @@
       <h3>A) Google Drive (Cloud Storage / Sync)</h3>
       <p>If you enable sync/backup, data is stored in <strong>your Google Drive account</strong>. Your Google account settings determine who can access or share Drive files.</p>
 
+      <h4>Encrypted Backups to Google Drive</h4>
+      <p>
+        If you enable backup or sync, the App can export your local data (including transaction records you enter)
+        into a backup file and upload it to your Google Drive.
+      </p>
+      <p>
+        <strong>On-device encryption before upload.</strong> Before any backup file is uploaded to Google Drive,
+        it is encrypted locally on your device. Google Drive receives and stores only the encrypted backup file.
+      </p>
+      <p>
+        <strong>Passphrase required to restore.</strong> To decrypt and restore the backup, you must provide the
+        passphrase you set for backups. We do not know, store, or have access to your passphrase. If you forget
+        the passphrase, the encrypted backup cannot be recovered by us.
+      </p>
+      <p>
+        <strong>Transport security.</strong> Data transfers between the App and Google Drive are performed over
+        secure connections (HTTPS/TLS) using Google APIs.
+      </p>
+
+      <h4>Shared Accounts and File Sharing</h4>
+      <p>
+        If you share your Google account with other people, or if you share your Google Drive files/folders with others,
+        those people may be able to access your backup files. While backups are encrypted, anyone who has both access to
+        the encrypted backup file and your backup passphrase may be able to restore and view your data.
+      </p>
+      <p>
+        You are responsible for keeping your Google account secure and for not sharing your backup passphrase with
+        anyone you do not trust.
+      </p>
+
       <h3>B) Firebase (Analytics / Crash Reporting / Remote Config / A-B Testing)</h3>
       <p>We may use Firebase services such as Firebase Analytics, Firebase Crashlytics, and Firebase Remote Config / A/B Testing. These services may collect device/usage/diagnostic data per their own terms and policies.</p>
 
@@ -146,6 +178,12 @@
         <li><strong>Google Drive (optional):</strong> if you enable sync/backup, data files are stored in your Google Drive.</li>
       </ul>
 
+      <h3>Data Included in Backups</h3>
+      <p>
+        Backups may include the financial records you enter in the App, such as transactions (amount, date, category, notes),
+        accounts/wallets, budgets, and other app settings required to restore your data.
+      </p>
+
       <h3>B) Retention</h3>
       <ul>
         <li><strong>Financial records:</strong> retained until you delete them in the App and/or delete associated files from Google Drive (if used).</li>
@@ -157,8 +195,25 @@
     <section>
       <h2>11) Security</h2>
       <p>
-        We use reasonable technical and organizational measures to protect data, such as secure communication and standard platform protections.
-        However, no method of transmission or storage is completely secure, and we cannot guarantee absolute security.
+        We use reasonable technical and organizational measures to help protect your information. In particular:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Encryption in transit:</strong> network communications with Google services (such as Google Drive)
+          use secure connections (HTTPS/TLS).
+        </li>
+        <li>
+          <strong>Encrypted backups:</strong> if you enable Google Drive backup/sync, backup files are encrypted on your device
+          before upload, and can only be decrypted with your backup passphrase.
+        </li>
+        <li>
+          <strong>No passphrase access:</strong> we do not store or transmit your backup passphrase to our servers.
+        </li>
+      </ul>
+
+      <p>
+        No method of transmission or storage is 100% secure, but we work to use appropriate safeguards for the type of data processed.
         You are responsible for maintaining the security of your device and Google account.
       </p>
     </section>
@@ -169,6 +224,7 @@
         <li>Ensuring the accuracy of information you enter.</li>
         <li>Securing your device (screen lock, OS updates, malware protection).</li>
         <li>Safeguarding your Google account and managing Google Drive sharing permissions.</li>
+        <li><strong>Keeping your backup passphrase private and secure.</strong> Anyone with both access to your encrypted backup file and your passphrase may be able to restore your data.</li>
         <li>Securely handling exported files (where you store them and who you share them with).</li>
       </ul>
     </section>
