@@ -1,294 +1,827 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
   <title>Privacy Policy — Watch My Wallet</title>
-  <meta name="description" content="Privacy Policy for the Watch My Wallet mobile application." />
   <style>
-    :root { color-scheme: light dark; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
-    main { max-width: 920px; margin: 0 auto; padding: 24px; }
-    h1 { font-size: 2rem; margin: 0 0 8px; }
-    h2 { font-size: 1.25rem; margin-top: 28px; }
-    p, li { font-size: 1rem; }
-    .meta { opacity: 0.8; margin: 0 0 16px; }
-    .card { border: 1px solid rgba(127,127,127,0.3); border-radius: 12px; padding: 16px; margin: 16px 0; }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-    a { word-break: break-word; }
+    :root{
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,.06);
+      --panel-2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --border: rgba(255,255,255,.14);
+      --accent: #7c5cff;
+      --accent-2: #00d4ff;
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --radius: 16px;
+      --radius-lg: 22px;
+      --max: 980px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f7fb;
+        --panel: rgba(10,20,40,.04);
+        --panel-2: rgba(10,20,40,.06);
+        --text: rgba(10,20,40,.92);
+        --muted: rgba(10,20,40,.65);
+        --border: rgba(10,20,40,.14);
+        --shadow: 0 18px 45px rgba(10,20,40,.12);
+      }
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 800px at 10% -10%, rgba(124,92,255,.25), transparent 60%),
+        radial-gradient(900px 700px at 95% 5%, rgba(0,212,255,.18), transparent 55%),
+        radial-gradient(900px 700px at 20% 100%, rgba(124,92,255,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg));
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a{
+      color: color-mix(in oklab, var(--accent) 85%, white 15%);
+      text-decoration: none;
+      text-underline-offset: 3px;
+    }
+    a:hover{ text-decoration: underline; }
+    a:focus-visible{
+      outline: 3px solid color-mix(in oklab, var(--accent) 70%, white 30%);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    .skip{
+      position:absolute; left:-9999px; top:10px;
+      background: #000; color:#fff; padding:10px 12px; border-radius:12px;
+      z-index: 999;
+    }
+    .skip:focus{ left: 12px; }
+
+    .shell{ width: min(var(--max), calc(100% - 32px)); margin: 0 auto; padding: 28px 0 48px; }
+
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: color-mix(in oklab, var(--bg) 70%, transparent 30%);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar .inner{
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 12px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+      min-width: 220px;
+    }
+    .logo{
+      width: 36px; height: 36px;
+      border-radius: 12px;
+      background:
+        radial-gradient(10px 10px at 30% 30%, rgba(255,255,255,.65), transparent 60%),
+        linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 22px rgba(124,92,255,.25);
+    }
+    .brand .name{
+      display:flex; flex-direction:column; line-height:1.1;
+    }
+    .brand .name strong{ font-size: 14px; letter-spacing:.2px; }
+    .brand .name span{ font-size: 12px; color: var(--muted); }
+
+    .actions{ display:flex; align-items:center; gap: 10px; }
+    .btn{
+      appearance:none; border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 13px;
+      cursor:pointer;
+      display:inline-flex; align-items:center; gap:8px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+    }
+    .btn:hover{ background: var(--panel-2); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0); }
+    .btn svg{ width: 16px; height: 16px; opacity:.9; }
+
+    header.hero{
+      margin-top: 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, var(--panel), color-mix(in oklab, var(--panel) 70%, transparent 30%));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    header.hero::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 260px at 10% 10%, rgba(124,92,255,.22), transparent 60%),
+        radial-gradient(700px 260px at 90% 0%, rgba(0,212,255,.16), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-inner{
+      position:relative;
+      padding: 28px 24px 18px;
+    }
+    h1{
+      margin: 0 0 8px;
+      font-size: clamp(24px, 3.2vw, 34px);
+      letter-spacing: -0.02em;
+    }
+    .subtitle{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .meta{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel) 82%, transparent 18%);
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .pill code{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: color-mix(in oklab, var(--text) 88%, var(--muted) 12%);
+      background: transparent;
+      padding:0;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    @media (min-width: 980px){
+      .layout{
+        grid-template-columns: 280px 1fr;
+        align-items:start;
+      }
+      .toc{
+        position: sticky;
+        top: 72px;
+      }
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .toc{
+      padding: 16px;
+    }
+    .toc h2{
+      margin: 0 0 10px;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .toc nav{
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+    }
+    .toc a{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      color: var(--text);
+      text-decoration:none;
+      transition: background .12s ease, border-color .12s ease;
+    }
+    .toc a:hover{
+      background: var(--panel-2);
+      border-color: var(--border);
+      text-decoration:none;
+    }
+    .toc .num{
+      width: 22px;
+      height: 22px;
+      border-radius: 8px;
+      display:grid;
+      place-items:center;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: color-mix(in oklab, var(--text) 80%, var(--muted) 20%);
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel) 88%, transparent 12%);
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+    .toc .label{
+      font-size: 13px;
+      line-height: 1.35;
+      color: color-mix(in oklab, var(--text) 92%, var(--muted) 8%);
+    }
+
+    main.content{
+      padding: 18px 18px 6px;
+    }
+
+    section{
+      padding: 18px 14px;
+      border-radius: 18px;
+      border: 1px solid transparent;
+      scroll-margin-top: 88px;
+    }
+    section:target{
+      background: color-mix(in oklab, var(--panel-2) 70%, transparent 30%);
+      border-color: color-mix(in oklab, var(--accent) 40%, var(--border) 60%);
+      box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent 82%);
+    }
+    section + section{
+      margin-top: 10px;
+    }
+
+    h2{
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    h3{
+      margin: 14px 0 8px;
+      font-size: 15px;
+      color: color-mix(in oklab, var(--text) 92%, var(--muted) 8%);
+    }
+
+    p{ margin: 10px 0; color: color-mix(in oklab, var(--text) 92%, var(--muted) 8%); }
+    ul{ margin: 10px 0 10px 18px; padding:0; }
+    li{ margin: 8px 0; color: color-mix(in oklab, var(--text) 92%, var(--muted) 8%); }
+
+    hr{
+      border:0;
+      border-top: 1px solid var(--border);
+      margin: 18px 0;
+      opacity: .7;
+    }
+
+    .callout{
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel) 80%, transparent 20%);
+      padding: 14px 14px;
+      margin: 12px 0;
+    }
+    .callout strong{ color: var(--text); }
+
+    table{
+      width:100%;
+      border-collapse: collapse;
+      margin: 12px 0 6px;
+      overflow:hidden;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel) 88%, transparent 12%);
+    }
+    th, td{
+      text-align:left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 13.5px;
+    }
+    th{
+      color: var(--muted);
+      font-weight: 600;
+      background: color-mix(in oklab, var(--panel-2) 65%, transparent 35%);
+    }
+    tr:last-child td{ border-bottom: 0; }
+
+    code, kbd{
+      font-family: var(--mono);
+      font-size: 12.5px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: color-mix(in oklab, var(--panel-2) 70%, transparent 30%);
+      color: color-mix(in oklab, var(--text) 90%, var(--muted) 10%);
+    }
+
+    footer{
+      margin-top: 18px;
+      padding: 18px 18px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footcard{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    /* Print */
+    @media print{
+      .topbar, .toc, .actions, .skip{ display:none !important; }
+      body{ background: #fff !important; color:#000 !important; }
+      :root{ --text:#000; --muted:#333; --border:#ccc; --panel:#fff; --panel-2:#fff; --shadow:none; }
+      .card, header.hero{ box-shadow:none !important; }
+      a{ color:#000; text-decoration: underline; }
+      section{ page-break-inside: avoid; }
+    }
   </style>
 </head>
+
 <body>
-  <main>
-    <header>
-      <h1>Privacy Policy — Watch My Wallet</h1>
-      <p class="meta"><strong>Effective Date:</strong> 2026-02-13</p>
-      <p>
-        This Privacy Policy explains how the <strong>Watch My Wallet</strong> mobile application (the “<strong>App</strong>”)
-        collects, uses, stores, and shares information. By using the App, you acknowledge that you have read and understood this Policy.
-      </p>
+  <a class="skip" href="#content">Перейти к содержанию</a>
+
+  <div class="topbar" role="banner">
+    <div class="inner">
+      <div class="brand" aria-label="Watch My Wallet">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="name">
+          <strong>Watch My Wallet</strong>
+          <span>Privacy Policy</span>
+        </div>
+      </div>
+
+      <div class="actions" aria-label="Actions">
+        <button class="btn" type="button" onclick="window.print()" aria-label="Print">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 8V4h10v4M7 17h10v3H7v-3Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7 14H6a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3h-1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Print
+        </button>
+        <button class="btn" type="button" onclick="navigator.clipboard?.writeText(location.href).catch(()=>{});" aria-label="Copy link">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10 13a5 5 0 0 0 7.07 0l1.41-1.41a5 5 0 0 0-7.07-7.07L9.7 4.93" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 11a5 5 0 0 0-7.07 0L5.52 12.41a5 5 0 0 0 7.07 7.07L14.3 19.07" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Copy link
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="shell">
+    <header class="hero" aria-label="Policy header">
+      <div class="hero-inner">
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">
+          Watch My Wallet ("App", "we", "us", "our") is operated by Aleksandrs Vozņarski.
+          We respect your privacy and are committed to transparency about how we collect, use, and protect your information.
+          This Privacy Policy applies to your use of the App on Android and iOS devices.
+        </p>
+
+        <div class="meta" role="list" aria-label="Policy meta">
+          <div class="pill" role="listitem"><strong>Effective Date:</strong>&nbsp;<code>2026-02-13</code></div>
+          <div class="pill" role="listitem"><strong>Last Updated:</strong>&nbsp;<code>2026-02-21</code></div>
+          <div class="pill" role="listitem"><strong>Contact:</strong>&nbsp;<a href="mailto:support@watch-my-wallet.com">support@watch-my-wallet.com</a></div>
+          <div class="pill" role="listitem"><strong>Controller:</strong>&nbsp;<span>Aleksandrs Vozņarski (Latvia, EU)</span></div>
+        </div>
+
+        <div class="callout" role="note" aria-label="Notice">
+          <strong>Notice:</strong> By using the App, you agree to the practices described in this Policy. If you do not agree, please do not use the App.
+        </div>
+      </div>
     </header>
 
-    <section class="card" aria-label="Owner / Controller">
-      <h2>1) Owner / Data Controller</h2>
-      <p><strong>Owner / Controller:</strong> Aleksandrs Voznarskis<br />
-         <strong>Contact Email:</strong> <a href="mailto:aleksandrsvoz@gmail.com">aleksandrsvoz@gmail.com</a><br />
-         <strong>Location:</strong> Latvia (European Union)
-      </p>
-    </section>
+    <div class="layout">
+      <aside class="card toc" aria-label="Table of contents">
+        <h2>Contents</h2>
+        <nav>
+          <a href="#s1"><span class="num">1</span><span class="label">Who We Are (Data Controller)</span></a>
+          <a href="#s2"><span class="num">2</span><span class="label">What Data We Collect</span></a>
+          <a href="#s3"><span class="num">3</span><span class="label">Legal Basis for Processing (GDPR)</span></a>
+          <a href="#s4"><span class="num">4</span><span class="label">How We Use Your Data</span></a>
+          <a href="#s5"><span class="num">5</span><span class="label">Google Drive Backup</span></a>
+          <a href="#s6"><span class="num">6</span><span class="label">Firebase Services</span></a>
+          <a href="#s7"><span class="num">7</span><span class="label">Currency Exchange Rates (Frankfurter API)</span></a>
+          <a href="#s8"><span class="num">8</span><span class="label">Subscriptions and Billing</span></a>
+          <a href="#s9"><span class="num">9</span><span class="label">Data Sharing and Third Parties</span></a>
+          <a href="#s10"><span class="num">10</span><span class="label">Device Identifier</span></a>
+          <a href="#s11"><span class="num">11</span><span class="label">Analytics and Opt-Out</span></a>
+          <a href="#s12"><span class="num">12</span><span class="label">Data Retention</span></a>
+          <a href="#s13"><span class="num">13</span><span class="label">Your Rights (GDPR and Applicable Law)</span></a>
+          <a href="#s14"><span class="num">14</span><span class="label">How to Delete Your Data</span></a>
+          <a href="#s15"><span class="num">15</span><span class="label">California Residents (CCPA)</span></a>
+          <a href="#s16"><span class="num">16</span><span class="label">International Data Transfers</span></a>
+          <a href="#s17"><span class="num">17</span><span class="label">Security</span></a>
+          <a href="#s18"><span class="num">18</span><span class="label">Children</span></a>
+          <a href="#s19"><span class="num">19</span><span class="label">Changes to This Policy</span></a>
+          <a href="#s20"><span class="num">20</span><span class="label">Contact</span></a>
+        </nav>
+      </aside>
 
-    <section>
-      <h2>2) Scope</h2>
-      <p>
-        This Policy applies to the App and related services and integrations used through the App (e.g., Google Drive, Google Play services, Firebase).
-        If a public website is later created, this Policy may be published there; until then, it is provided via the App listing and/or repository page.
-      </p>
-    </section>
+      <main id="content" class="card content" role="main" aria-label="Privacy policy content">
 
-    <section>
-      <h2>3) Summary (Key Points)</h2>
-      <ul>
-        <li>The App primarily stores your finance data <strong>on your device</strong> and, if you enable it, <strong>in your Google Drive account</strong>.</li>
-        <li><strong>If you enable Google Drive backup/sync, backup files are encrypted on your device before upload</strong>; Google Drive receives only encrypted backups.</li>
-        <li>Restoring an encrypted backup requires a <strong>backup passphrase</strong> you set; <strong>we do not know, store, or have access</strong> to this passphrase.</li>
-        <li>The App uses <strong>analytics and diagnostics</strong> (e.g., Firebase Analytics and Crashlytics) to improve stability and user experience.</li>
-        <li>The App may use <strong>remote configuration / A/B testing</strong> services (e.g., Firebase Remote Config / A/B Testing) to evaluate features and improve the App.</li>
-        <li>The App may support <strong>Google Play subscriptions</strong> in the future; Google processes payments.</li>
-        <li>Some identifiers may be collected by SDKs. If Firebase Authentication is added, the App may process account identifiers (e.g., email and user ID) to support sign-in/sync.</li>
-      </ul>
-    </section>
+        <section id="s1" aria-label="Section 1">
+          <h2>1. Who We Are (Data Controller)</h2>
+          <p>For the purposes of the General Data Protection Regulation (GDPR) and other applicable privacy laws, the data controller is:</p>
+          <p><strong>Aleksandrs Vozņarski</strong><br>
+            Email: <a href="mailto:support@watch-my-wallet.com">support@watch-my-wallet.com</a><br>
+            Country: Latvia, European Union
+          </p>
+        </section>
 
-    <section>
-      <h2>4) Information We Collect</h2>
-      <p>The App is designed to work without requiring you to create an account. Depending on the features you use and the services enabled, we may process the following categories:</p>
+        <section id="s2" aria-label="Section 2">
+          <h2>2. What Data We Collect</h2>
 
-      <h3>A) User-Provided Data (Financial &amp; Personal Content)</h3>
-      <ul>
-        <li><strong>Financial data you enter:</strong> transactions, categories, budgets, balances, notes, and related records.</li>
-        <li><strong>Attachments/content you add:</strong> optional notes, labels, or files (if you choose to attach/import them).</li>
-      </ul>
+          <h3>2.1 Data You Provide Directly</h3>
+          <ul>
+            <li><strong>Account data:</strong> your Google account email address and Google user identifier, collected when you sign in via Firebase Authentication.</li>
+            <li><strong>Profile data:</strong> names you assign to financial profiles within the App.</li>
+            <li><strong>Financial data:</strong> transactions, categories, wallets, balances, recurring rules, and all other records you manually enter into the App.</li>
+            <li><strong>App settings:</strong> your preferences such as display language, app theme, and default currency.</li>
+          </ul>
 
-      <h3>B) Cloud Sync / Storage Data (Google Drive)</h3>
-      <p>If you enable sync/backup, the App will store or read data files in <strong>your Google Drive</strong>. This can include financial records you created in the App.</p>
+          <h3>2.2 Data Generated Automatically</h3>
+          <ul>
+            <li><strong>Anonymous device identifier:</strong> the App generates and stores a persistent anonymous identifier ("device ID") on your device. This identifier is used solely to associate your local data with sync operations and does not identify you personally. It is not linked to your name, email, or any other directly identifying information.</li>
+            <li><strong>Sync metadata:</strong> timestamps, version counters, and conflict-resolution data required to synchronise your data across devices.</li>
+            <li><strong>Crash and diagnostic data:</strong> if a crash or error occurs, anonymised diagnostic information (stack traces, device model, OS version, App version) may be sent to Firebase Crashlytics. This data does not include your financial records.</li>
+            <li><strong>Analytics and usage data:</strong> anonymised data about how you use the App (features accessed, session duration, general usage patterns) may be collected via Firebase Analytics or similar services to help us understand and improve the App.</li>
+          </ul>
 
-      <h3>C) Identifiers</h3>
-      <ul>
-        <li><strong>App instance / device-related identifiers</strong> may be collected by analytics/diagnostics SDKs.</li>
-        <li>If sign-in is added (e.g., Firebase Authentication), we may also process <strong>account identifiers</strong> such as email address and a user ID assigned by the authentication provider.</li>
-      </ul>
+          <h3>2.3 Data We Do Not Collect</h3>
+          <ul>
+            <li>We do not collect payment card numbers or banking credentials.</li>
+            <li>We do not access any Google Drive files other than the App's own backup folder (appDataFolder).</li>
+            <li>We do not collect your precise location.</li>
+            <li>We do not collect biometric data.</li>
+          </ul>
+        </section>
 
-      <h3>D) Usage Data (Analytics)</h3>
-      <p>Interaction data such as screens visited, feature usage, session information, and aggregated engagement metrics.</p>
+        <section id="s3" aria-label="Section 3">
+          <h2>3. Legal Basis for Processing (GDPR)</h2>
 
-      <h3>E) Diagnostics (Crash &amp; Performance)</h3>
-      <p>Crash logs, error reports, and performance diagnostics (typically including device model, OS version, app version, time of crash, and event context).</p>
+          <p>We process your personal data on the following legal bases:</p>
 
-      <h3>F) Device / Technical Data</h3>
-      <p>Device model, OS version, language, region settings, app version, and general technical information required to operate the App.</p>
-    </section>
+          <table aria-label="Legal basis table">
+            <thead>
+              <tr>
+                <th>Processing Activity</th>
+                <th>Legal Basis</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Providing core app functionality (local data storage, display)</td>
+                <td>Performance of a contract (Art. 6(1)(b) GDPR)</td>
+              </tr>
+              <tr>
+                <td>Firebase Authentication (sign-in)</td>
+                <td>Performance of a contract (Art. 6(1)(b) GDPR)</td>
+              </tr>
+              <tr>
+                <td>Google Drive sync (optional)</td>
+                <td>Your consent, given when you enable sync (Art. 6(1)(a) GDPR)</td>
+              </tr>
+              <tr>
+                <td>Crash reporting and diagnostics</td>
+                <td>Legitimate interests — ensuring app stability (Art. 6(1)(f) GDPR)</td>
+              </tr>
+              <tr>
+                <td>Analytics and usage statistics</td>
+                <td>Legitimate interests — app improvement (Art. 6(1)(f) GDPR)</td>
+              </tr>
+              <tr>
+                <td>Subscription management</td>
+                <td>Performance of a contract (Art. 6(1)(b) GDPR)</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
-    <section>
-      <h2>5) How We Use Information</h2>
-      <ul>
-        <li>Provide core functionality (personal finance tracking, reports, categories).</li>
-        <li>Save, restore, sync, and back up data (if you enable Google Drive sync/backup).</li>
-        <li>Improve reliability, performance, and user experience (analytics/diagnostics).</li>
-        <li>Run experiments and feature rollouts (A/B tests, remote configuration).</li>
-        <li>Respond to your support requests.</li>
-        <li>Comply with legal obligations when required.</li>
-      </ul>
-    </section>
+        <section id="s4" aria-label="Section 4">
+          <h2>4. How We Use Your Data</h2>
+          <p>We use your data to:</p>
+          <ul>
+            <li>Provide, operate, and maintain the App and its features</li>
+            <li>Authenticate your identity and manage your account</li>
+            <li>Synchronise your data across devices via Google Drive (if enabled)</li>
+            <li>Diagnose crashes, bugs, and technical issues</li>
+            <li>Analyse general usage patterns to improve the App</li>
+            <li>Process subscription payments and verify subscription status</li>
+            <li>Respond to your support requests</li>
+            <li>Comply with our legal obligations</li>
+          </ul>
+        </section>
 
-    <section>
-      <h2>6) Legal Bases (GDPR / EEA Users)</h2>
-      <p>Where GDPR applies, we rely on:</p>
-      <ul>
-        <li><strong>Contract / performance of a contract:</strong> to provide requested features (e.g., exporting/importing, sync/backup you enable).</li>
-        <li><strong>Consent:</strong> where required for optional analytics or similar features, depending on configuration and applicable law.</li>
-        <li><strong>Legitimate interests:</strong> to improve and secure the App, prevent abuse, and maintain stability (balanced against your rights).</li>
-      </ul>
-    </section>
+        <section id="s5" aria-label="Section 5">
+          <h2>5. Google Drive Backup</h2>
 
-    <section>
-      <h2>7) Sharing and Third Parties</h2>
-      <p>We do <strong>not</strong> sell your personal data. We may share or process data with the following categories of service providers, only as necessary:</p>
+          <p>If you enable sync, the App:</p>
+          <ul>
+            <li>Uses <strong>Google Sign-In</strong> to obtain your consent and access credentials</li>
+            <li>Requests only the <strong>drive.appdata</strong> scope — the minimal permission that allows read/write access exclusively to the App's private <code>appDataFolder</code> in your Google Drive</li>
+            <li><strong>Does not access, read, or modify</strong> any other files or folders in your Google Drive</li>
+            <li>Encrypts backup data <strong>on-device</strong> before uploading, using a passphrase you create — your data is end-to-end encrypted and we cannot read it</li>
+          </ul>
 
-      <h3>A) Google Drive (Cloud Storage / Sync)</h3>
-      <p>If you enable sync/backup, data is stored in <strong>your Google Drive account</strong>. Your Google account settings determine who can access or share Drive files.</p>
+          <div class="callout" role="note">
+            <strong>You are solely responsible for remembering your encryption passphrase.</strong>
+            If you lose your passphrase, your encrypted backup cannot be recovered by us or by Google.
+          </div>
+        </section>
 
-      <h4>Encrypted Backups to Google Drive</h4>
-      <p>
-        If you enable backup or sync, the App can export your local data (including transaction records you enter)
-        into a backup file and upload it to your Google Drive.
-      </p>
-      <p>
-        <strong>On-device encryption before upload.</strong> Before any backup file is uploaded to Google Drive,
-        it is encrypted locally on your device. Google Drive receives and stores only the encrypted backup file.
-      </p>
-      <p>
-        <strong>Passphrase required to restore.</strong> To decrypt and restore the backup, you must provide the
-        passphrase you set for backups. We do not know, store, or have access to your passphrase. If you forget
-        the passphrase, the encrypted backup cannot be recovered by us.
-      </p>
-      <p>
-        <strong>Transport security.</strong> Data transfers between the App and Google Drive are performed over
-        secure connections (HTTPS/TLS) using Google APIs.
-      </p>
+        <section id="s6" aria-label="Section 6">
+          <h2>6. Firebase Services</h2>
 
-      <h4>Shared Accounts and File Sharing</h4>
-      <p>
-        If you share your Google account with other people, or if you share your Google Drive files/folders with others,
-        those people may be able to access your backup files. While backups are encrypted, anyone who has both access to
-        the encrypted backup file and your backup passphrase may be able to restore and view your data.
-      </p>
-      <p>
-        You are responsible for keeping your Google account secure and for not sharing your backup passphrase with
-        anyone you do not trust.
-      </p>
+          <p>The App uses the following Firebase services provided by Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA:</p>
 
-      <h3>B) Firebase (Analytics / Crash Reporting / Remote Config / A-B Testing)</h3>
-      <p>We may use Firebase services such as Firebase Analytics, Firebase Crashlytics, and Firebase Remote Config / A/B Testing. These services may collect device/usage/diagnostic data per their own terms and policies.</p>
+          <table aria-label="Firebase services table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Purpose</th>
+                <th>Data Processed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Firebase Authentication</td>
+                <td>Account sign-in and identity management</td>
+                <td>Email address, Google user ID, authentication tokens</td>
+              </tr>
+              <tr>
+                <td>Firebase Crashlytics</td>
+                <td>Crash reporting and diagnostics</td>
+                <td>Anonymised crash data, device info, App version</td>
+              </tr>
+              <tr>
+                <td>Firebase Remote Config</td>
+                <td>Remote feature configuration</td>
+                <td>No personal data collected</td>
+              </tr>
+              <tr>
+                <td>Firebase A/B Testing</td>
+                <td>Feature experimentation</td>
+                <td>Anonymised usage data</td>
+              </tr>
+            </tbody>
+          </table>
 
-      <h3>C) Google Play Services and Billing (Subscriptions / Payments)</h3>
-      <p>If subscriptions or in-app purchases are offered, payment processing is handled by <strong>Google Play Billing</strong>. Google may process purchase and subscription data to complete transactions and comply with legal requirements.</p>
-    </section>
+          <p>
+            In addition, we may use <strong>other Firebase services</strong> in the future (such as Cloud Firestore for subscription status storage,
+            Firebase Performance Monitoring, or others). When such services are introduced, this Policy will be updated accordingly.
+          </p>
 
-    <section>
-      <h2>8) Google Drive Permissions / Scopes (General)</h2>
-      <p>
-        When you connect Google Drive, the App requests the permissions/scopes needed to access the specific file(s) it creates/uses for backup/sync and/or access App-stored data in Drive (depending on implementation).
-        We request only the minimum permissions required for the feature to work. You can revoke access at any time through your Google account settings.
-      </p>
-    </section>
+          <p>
+            Data processed by Firebase is subject to <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and
+            <a href="https://business.safety.google/processorterms/">Google's Data Processing Terms</a>. Firebase data may be stored and processed in the United States
+            and other countries where Google operates.
+          </p>
+        </section>
 
-    <section>
-      <h2>9) Data Export / Import (Beyond Google Drive)</h2>
-      <p>
-        The App may allow exporting or importing your data (e.g., local files).
-        When you export, you choose where the exported file is stored and who you share it with. You are responsible for securing exported files and controlling any sharing.
-      </p>
-    </section>
+        <section id="s7" aria-label="Section 7">
+          <h2>7. Currency Exchange Rates (Frankfurter API)</h2>
 
-    <section>
-      <h2>10) Data Storage and Retention</h2>
+          <p>
+            The App retrieves currency exchange rate data from the <strong>Frankfurter API</strong> (frankfurter.app), a third-party, open-source service.
+            When you use currency conversion features, the App makes requests to this service. These requests do not include your personal financial data — only a request for exchange rate data.
+          </p>
 
-      <h3>A) Storage Locations</h3>
-      <ul>
-        <li><strong>On-device:</strong> the App stores your data locally to provide offline functionality.</li>
-        <li><strong>Google Drive (optional):</strong> if you enable sync/backup, data files are stored in your Google Drive.</li>
-      </ul>
+          <p>Exchange rates are cached on-device for up to 24 hours. We are not affiliated with Frankfurter, and we have no control over the accuracy, availability, or data practices of that service. <strong>Exchange rates are provided for informational convenience only and must not be relied upon for financial transactions or reporting.</strong></p>
+        </section>
 
-      <h3>Data Included in Backups</h3>
-      <p>
-        Backups may include the financial records you enter in the App, such as transactions (amount, date, category, notes),
-        accounts/wallets, budgets, and other app settings required to restore your data.
-      </p>
+        <section id="s8" aria-label="Section 8">
+          <h2>8. Subscriptions and Billing</h2>
 
-      <h3>B) Retention</h3>
-      <ul>
-        <li><strong>Financial records:</strong> retained until you delete them in the App and/or delete associated files from Google Drive (if used).</li>
-        <li><strong>Diagnostics/analytics:</strong> retained for a limited period consistent with service provider settings and operational needs.</li>
-      </ul>
-      <p>We recommend that you periodically review and delete backups/files in Google Drive if you no longer want them stored.</p>
-    </section>
+          <p><em>(This section applies when subscription features are made available.)</em></p>
 
-    <section>
-      <h2>11) Security</h2>
-      <p>
-        We use reasonable technical and organizational measures to help protect your information. In particular:
-      </p>
+          <p>Subscription payments are processed by the platform through which you obtained the App:</p>
+          <ul>
+            <li><strong>Android (Google Play):</strong> payments and subscription management are handled by Google LLC. Google processes your billing information in accordance with its own privacy policy. We receive subscription status (active/expired) and a subscription identifier from Google, but we do not receive your payment card details.</li>
+            <li><strong>iOS (App Store):</strong> payments and subscription management are handled by Apple Inc. in accordance with Apple's privacy policy. We receive subscription status and a transaction identifier.</li>
+          </ul>
 
-      <ul>
-        <li>
-          <strong>Encryption in transit:</strong> network communications with Google services (such as Google Drive)
-          use secure connections (HTTPS/TLS).
-        </li>
-        <li>
-          <strong>Encrypted backups:</strong> if you enable Google Drive backup/sync, backup files are encrypted on your device
-          before upload, and can only be decrypted with your backup passphrase.
-        </li>
-        <li>
-          <strong>No passphrase access:</strong> we do not store or transmit your backup passphrase to our servers.
-        </li>
-      </ul>
+          <p>Subscription status may be stored using Firebase services to allow the App to verify your entitlement across devices.</p>
+        </section>
 
-      <p>
-        No method of transmission or storage is 100% secure, but we work to use appropriate safeguards for the type of data processed.
-        You are responsible for maintaining the security of your device and Google account.
-      </p>
-    </section>
+        <section id="s9" aria-label="Section 9">
+          <h2>9. Data Sharing and Third Parties</h2>
 
-    <section>
-      <h2>12) User Responsibilities</h2>
-      <ul>
-        <li>Ensuring the accuracy of information you enter.</li>
-        <li>Securing your device (screen lock, OS updates, malware protection).</li>
-        <li>Safeguarding your Google account and managing Google Drive sharing permissions.</li>
-        <li><strong>Keeping your backup passphrase private and secure.</strong> Anyone with both access to your encrypted backup file and your passphrase may be able to restore your data.</li>
-        <li>Securely handling exported files (where you store them and who you share them with).</li>
-      </ul>
-    </section>
+          <h3>9.1 What We Do Not Do</h3>
+          <p>We do not sell, rent, or trade your <strong>personally identifiable financial data</strong> to third parties.</p>
 
-    <section>
-      <h2>13) Your Rights (EEA / GDPR)</h2>
-      <p>If you are located in the EEA, you may have rights including access, correction, deletion, restriction/objection, portability, and the right to lodge a complaint with a supervisory authority.</p>
-      <p>
-        To exercise your rights, contact: <a href="mailto:aleksandrsvoz@gmail.com">aleksandrsvoz@gmail.com</a>.
-        Because data is primarily stored locally and/or in your Google Drive, many actions can be performed directly by you within the App and Google Drive settings.
-      </p>
-    </section>
+          <h3>9.2 Service Providers</h3>
+          <p>We share data with third-party service providers only to the extent necessary to operate the App. Current providers include Google LLC (Firebase, Google Drive, Google Play). These providers act as data processors on our behalf and are contractually bound to process data only as instructed and to implement appropriate security measures.</p>
 
-    <section>
-      <h2>14) International Transfers</h2>
-      <p>
-        The App may be used worldwide. Some service providers (e.g., Google/Firebase) may process data on servers located outside your country, including outside the EEA.
-        Where required, appropriate safeguards are used according to provider practices and applicable law.
-      </p>
-    </section>
+          <h3>9.3 Aggregated and Anonymised Data</h3>
+          <p>We may share or license <strong>Aggregated Data</strong> — information that has been aggregated across users and de-identified so that it cannot reasonably be used to identify any individual — with third parties, including for commercial purposes. For example, this may include anonymised spending category trends, usage statistics, or general behavioural patterns. Aggregated Data does not constitute personal data under GDPR and may be used and disclosed without restriction.</p>
 
-    <section>
-      <h2>15) Children’s Privacy</h2>
-      <p>
-        The App is not directed to children under 13 (or under 16 in the EEA where applicable). We do not knowingly collect personal data from children.
-        If you believe a child has provided personal data, contact us and we will take appropriate steps.
-      </p>
-    </section>
+          <h3>9.4 Legal Requirements</h3>
+          <p>We may disclose your data if required to do so by law, court order, or governmental authority, or if we believe in good faith that such disclosure is necessary to protect our rights, your safety, or the safety of others.</p>
 
-    <section>
-      <h2>16) Changes to This Policy</h2>
-      <p>
-        We may update this Policy from time to time. The updated version will be published with a new “Effective Date.”
-        If changes are material, we will provide additional notice within the App where required by law.
-      </p>
-    </section>
+          <h3>9.5 Business Transfers</h3>
+          <p>If we are involved in a merger, acquisition, or sale of assets, your data may be transferred as part of that transaction. We will notify you before your data is transferred and becomes subject to a different privacy policy.</p>
+        </section>
 
-    <section>
-      <h2>17) Disclaimer</h2>
-      <p>
-        The App is provided on an “AS IS” and “AS AVAILABLE” basis. We do not warrant that the App will be uninterrupted or error-free.
-        This does not affect any mandatory rights you may have under applicable consumer protection laws.
-      </p>
-    </section>
+        <section id="s10" aria-label="Section 10">
+          <h2>10. Device Identifier</h2>
 
-    <section>
-      <h2>18) Limitation of Liability</h2>
-      <p>
-        To the maximum extent permitted by law, the Owner/Controller is not liable for indirect, incidental, special, consequential, or punitive damages arising from your use of the App, including loss of data or loss of profits.
-        This limitation does not exclude liability that cannot be excluded or limited under applicable law and does not affect mandatory consumer rights.
-      </p>
-    </section>
+          <p>The App generates a persistent anonymous device identifier ("device ID") stored in local device storage. This identifier:</p>
+          <ul>
+            <li>Is a randomly generated string with no inherent link to your identity</li>
+            <li>Is used to associate local data with sync operations (to distinguish your data from another user's on the same Google account, or from a previous installation)</li>
+            <li>Is not shared with advertisers</li>
+            <li>Is reset if you clear the App's data or reinstall the App</li>
+          </ul>
+        </section>
 
-    <section class="card">
-      <h2>19) Contact</h2>
-      <p>
-        <strong>Aleksandrs Voznarskis</strong><br />
-        <a href="mailto:aleksandrsvoz@gmail.com">aleksandrsvoz@gmail.com</a>
-      </p>
-    </section>
+        <section id="s11" aria-label="Section 11">
+          <h2>11. Analytics and Opt-Out</h2>
 
-    <footer class="meta">
-      <p>© 2026 Aleksandrs Voznarskis. All rights reserved.</p>
-    </footer>
-  </main>
+          <p>We may use Firebase Analytics or similar analytics services to collect anonymised usage data. This data helps us understand how the App is used and how to improve it.</p>
+
+          <p>Where technically feasible, we will provide an option within the App's settings to opt out of non-essential analytics collection. If no in-app opt-out is currently available, you may:</p>
+          <ul>
+            <li>Disable Firebase Analytics collection through your device's advertising settings (e.g., "Opt out of Ads Personalisation" on Android)</li>
+            <li>Contact us at <a href="mailto:support@watch-my-wallet.com">support@watch-my-wallet.com</a> to request exclusion from analytics processing</li>
+          </ul>
+
+          <p>Opting out of analytics does not affect your ability to use the App's core features.</p>
+        </section>
+
+        <section id="s12" aria-label="Section 12">
+          <h2>12. Data Retention</h2>
+
+          <table aria-label="Data retention table">
+            <thead>
+              <tr>
+                <th>Data Type</th>
+                <th>Retention Period</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Local financial data</td>
+                <td>Until you delete it or uninstall the App</td>
+              </tr>
+              <tr>
+                <td>Google Drive backup</td>
+                <td>Until you erase cloud data or revoke Google access</td>
+              </tr>
+              <tr>
+                <td>Firebase Authentication records</td>
+                <td>Until you delete your account or request deletion</td>
+              </tr>
+              <tr>
+                <td>Firebase Crashlytics data</td>
+                <td>Subject to Google/Firebase retention policies (typically 90 days)</td>
+              </tr>
+              <tr>
+                <td>Analytics data</td>
+                <td>Subject to Google/Firebase retention policies</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>When you request account deletion or data erasure, we will take reasonable steps to remove your personal data from our systems within 30 days, subject to any legal obligations to retain certain records.</p>
+        </section>
+
+        <section id="s13" aria-label="Section 13">
+          <h2>13. Your Rights (GDPR and Applicable Law)</h2>
+
+          <p>If you are located in the European Economic Area (EEA), United Kingdom, or another jurisdiction with applicable privacy laws, you may have the following rights:</p>
+          <ul>
+            <li><strong>Right of access:</strong> request a copy of the personal data we hold about you</li>
+            <li><strong>Right to rectification:</strong> request correction of inaccurate personal data</li>
+            <li><strong>Right to erasure ("right to be forgotten"):</strong> request deletion of your personal data</li>
+            <li><strong>Right to restriction:</strong> request that we restrict processing of your personal data</li>
+            <li><strong>Right to data portability:</strong> receive your personal data in a structured, machine-readable format</li>
+            <li><strong>Right to object:</strong> object to processing based on legitimate interests</li>
+            <li><strong>Right to withdraw consent:</strong> where processing is based on consent (e.g., sync), withdraw it at any time without affecting prior processing</li>
+            <li><strong>Right to lodge a complaint:</strong> file a complaint with your national data protection authority (in Latvia: <a href="https://www.dvi.gov.lv">Datu valsts inspekcija, dvi.gov.lv</a>)</li>
+          </ul>
+
+          <p>To exercise any of these rights, contact us at: <strong><a href="mailto:support@watch-my-wallet.com">support@watch-my-wallet.com</a></strong></p>
+
+          <p>We will respond to requests within 30 days. We may ask you to verify your identity before processing your request.</p>
+        </section>
+
+        <section id="s14" aria-label="Section 14">
+          <h2>14. How to Delete Your Data</h2>
+
+          <p>You can control or delete your data at any time:</p>
+          <ul>
+            <li><strong>Delete cloud backup:</strong> Settings → Accounts &amp; Profiles → Account actions → Erase cloud data</li>
+            <li><strong>Stop sync:</strong> Settings → Accounts &amp; Profiles → Account actions → Sign out</li>
+            <li><strong>Revoke Google access:</strong> remove App access in your <a href="https://myaccount.google.com/permissions">Google Account security settings</a></li>
+            <li><strong>Delete local data:</strong> clear App data in your device's system settings, or uninstall the App</li>
+            <li><strong>Request account deletion:</strong> contact us at <a href="mailto:support@watch-my-wallet.com">support@watch-my-wallet.com</a></li>
+          </ul>
+        </section>
+
+        <section id="s15" aria-label="Section 15">
+          <h2>15. California Residents (CCPA)</h2>
+
+          <p>If you are a California resident, you have the following rights under the California Consumer Privacy Act (CCPA):</p>
+          <ul>
+            <li><strong>Right to know:</strong> you may request information about the categories and specific pieces of personal information we have collected about you in the past 12 months.</li>
+            <li><strong>Right to delete:</strong> you may request deletion of your personal information, subject to certain exceptions.</li>
+            <li><strong>Right to opt out of sale:</strong> to the extent we share Aggregated Data with third parties in a manner that constitutes a "sale" under CCPA, you have the right to opt out. Aggregated, de-identified data that cannot reasonably be linked back to you is not considered a "sale" of personal information under CCPA. To the extent any sharing qualifies, contact us at <a href="mailto:support@watch-my-wallet.com">support@watch-my-wallet.com</a> to opt out.</li>
+            <li><strong>Right to non-discrimination:</strong> we will not discriminate against you for exercising your CCPA rights.</li>
+          </ul>
+
+          <p>To exercise these rights, contact: <strong><a href="mailto:support@watch-my-wallet.com">support@watch-my-wallet.com</a></strong></p>
+        </section>
+
+        <section id="s16" aria-label="Section 16">
+          <h2>16. International Data Transfers</h2>
+
+          <p>Your data may be transferred to and processed in countries outside your country of residence, including the United States (where Google/Firebase infrastructure is located). When we transfer data from the EEA, we rely on appropriate safeguards, including Standard Contractual Clauses approved by the European Commission, as implemented by Google in its data processing agreements.</p>
+        </section>
+
+        <section id="s17" aria-label="Section 17">
+          <h2>17. Security</h2>
+
+          <p>We implement reasonable technical and organisational measures to protect your data, including:</p>
+          <ul>
+            <li>HTTPS/TLS encryption for all data in transit</li>
+            <li>End-to-end encryption of Google Drive backup data (encrypted on-device before upload)</li>
+            <li>Encrypted storage of authentication tokens on-device</li>
+            <li>Minimal data collection (data minimisation principle)</li>
+          </ul>
+
+          <p>No method of transmission or storage is 100% secure. We cannot guarantee absolute security. You are responsible for maintaining the security of your Google account credentials and your encryption passphrase.</p>
+        </section>
+
+        <section id="s18" aria-label="Section 18">
+          <h2>18. Children</h2>
+
+          <p>The App is not directed to children under 16 years of age (or the applicable age of digital consent in your jurisdiction). We do not knowingly collect personal data from children. If you believe a child has provided us with personal data, please contact us and we will take steps to delete it.</p>
+        </section>
+
+        <section id="s19" aria-label="Section 19">
+          <h2>19. Changes to This Policy</h2>
+
+          <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this document. For material changes, we will provide notice within the App or via email. Your continued use of the App after any change constitutes your acceptance of the updated Policy.</p>
+        </section>
+
+        <section id="s20" aria-label="Section 20">
+          <h2>20. Contact</h2>
+
+          <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please contact:</p>
+
+          <p><strong>Aleksandrs Vozņarskis</strong><br>
+            Email: <strong><a href="mailto:support@watch-my-wallet.com">support@watch-my-wallet.com</a></strong>
+          </p>
+
+          <p><em>This Privacy Policy was last updated on 2026-02-21.</em></p>
+        </section>
+
+        <footer aria-label="Footer">
+          <div class="footcard">
+            <div><strong>Watch My Wallet</strong> — Privacy Policy</div>
+            <div>© <span id="year"></span> Aleksandrs Vozņarski</div>
+          </div>
+        </footer>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Small convenience: auto-update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
