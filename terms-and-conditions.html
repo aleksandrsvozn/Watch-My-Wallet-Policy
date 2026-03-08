@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Terms of Service — Wally, officially known as Watch My Wallet</title>
+  <meta
+    name="description"
+    content="Terms of Service for Wally, officially known as Watch My Wallet. Effective Date: 2026-02-13. Last Updated: 2026-02-24."
+  />
+
+  <style>
+    :root{
+      --bg: #0b0c0f;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --text: rgba(255,255,255,.88);
+      --muted: rgba(255,255,255,.62);
+      --faint: rgba(255,255,255,.42);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 16px 60px rgba(0,0,0,.45);
+      --accent: #ff8a3d;
+      --accent2:#ffd2b8;
+      --link: #ffd2b8;
+      --code: rgba(255,255,255,.10);
+      --radius: 18px;
+      --radius2: 22px;
+      --max: 1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+
+      --tocW: 320px;
+      --topbarH: 62px;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #ffffff;
+        --panel: rgba(0,0,0,.04);
+        --panel2: rgba(0,0,0,.06);
+        --text: rgba(0,0,0,.86);
+        --muted: rgba(0,0,0,.62);
+        --faint: rgba(0,0,0,.45);
+        --border: rgba(0,0,0,.12);
+        --shadow: 0 14px 50px rgba(0,0,0,.10);
+        --accent: #d85b12;
+        --accent2:#ffefe6;
+        --link: #b4480e;
+        --code: rgba(0,0,0,.06);
+      }
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      background:
+        radial-gradient(1200px 600px at 15% -10%, rgba(255,138,61,.18), transparent 60%),
+        radial-gradient(900px 500px at 95% 10%, rgba(255,210,184,.12), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a{ color: var(--link); text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg) 75%, transparent);
+      border-bottom: 1px solid var(--border);
+      height: var(--topbarH);
+      display:flex;
+      align-items:center;
+    }
+    .topbar .inner{
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+      padding: 0 18px;
+      display:flex;
+      gap: 14px;
+      align-items:center;
+      justify-content: space-between;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .logo{
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--accent) 88%, white),
+        color-mix(in srgb, var(--accent2) 55%, transparent)
+      );
+      box-shadow: 0 8px 20px rgba(0,0,0,.18);
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      flex: 0 0 auto;
+    }
+    .brand-title{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+      min-width: 0;
+    }
+    .brand-title strong{
+      font-size: 14px;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+    .brand-title span{
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow:hidden;
+      text-overflow: ellipsis;
+    }
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+    }
+    .search{
+      position: relative;
+      width: min(420px, 50vw);
+      max-width: 520px;
+    }
+    .search input{
+      width: 100%;
+      height: 40px;
+      padding: 10px 12px 10px 40px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 90%, transparent);
+      color: var(--text);
+      outline: none;
+      box-shadow: none;
+    }
+    .search input::placeholder{ color: var(--faint); }
+    .search .icon{
+      position:absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--faint);
+      font-size: 16px;
+      user-select:none;
+      pointer-events:none;
+    }
+    .btn{
+      height: 40px;
+      padding: 0 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 90%, transparent);
+      color: var(--text);
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      user-select:none;
+    }
+    .btn:hover{ background: color-mix(in srgb, var(--panel2) 85%, transparent); }
+    .btn:active{ transform: translateY(1px); }
+    .btn small{ color: var(--muted); font-size: 12px; }
+    .kbd{
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 2px 7px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--code) 70%, transparent);
+      color: var(--muted);
+    }
+
+    .wrap{
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+      padding: 22px 18px 80px;
+      display:grid;
+      grid-template-columns: var(--tocW) 1fr;
+      gap: 18px;
+      align-items:start;
+    }
+
+    aside{
+      position: sticky;
+      top: calc(var(--topbarH) + 18px);
+      max-height: calc(100vh - var(--topbarH) - 30px);
+      overflow:auto;
+      border-radius: var(--radius2);
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 92%, transparent);
+      box-shadow: var(--shadow);
+    }
+    .toc{
+      padding: 14px 14px 10px;
+    }
+    .toc h2{
+      margin: 0 0 10px 0;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .toc a{
+      display:block;
+      padding: 8px 10px;
+      border-radius: 12px;
+      color: var(--text);
+      border: 1px solid transparent;
+    }
+    .toc a:hover{
+      background: color-mix(in srgb, var(--panel2) 90%, transparent);
+      text-decoration:none;
+      border-color: color-mix(in srgb, var(--border) 70%, transparent);
+    }
+    .toc a .num{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-right: 8px;
+    }
+    .toc a .label{
+      font-size: 13px;
+    }
+    .toc hr{
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 10px 0;
+      opacity: .9;
+    }
+    .toc .mini{
+      display:flex;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--panel2) 80%, transparent);
+      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 90%, transparent);
+      color: var(--text);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .pill b{
+      color: var(--accent);
+      font-weight: 650;
+    }
+
+    main{
+      border-radius: var(--radius2);
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 88%, transparent);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero{
+      padding: 26px 26px 20px;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(900px 300px at 20% 0%, rgba(255,138,61,.14), transparent 55%),
+        radial-gradient(700px 280px at 100% 40%, rgba(255,210,184,.10), transparent 55%),
+        transparent;
+    }
+    .hero h1{
+      margin: 0 0 10px 0;
+      font-size: 28px;
+      letter-spacing: -0.02em;
+    }
+    .meta{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .meta .dot{ opacity:.5; }
+    .lede{
+      margin: 10px 0 0 0;
+      color: var(--text);
+      max-width: 78ch;
+      font-size: 14.5px;
+    }
+    .content{
+      padding: 18px 26px 30px;
+    }
+    section{
+      scroll-margin-top: calc(var(--topbarH) + 18px);
+      padding: 10px 0 8px;
+      border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+    }
+    section:last-child{ border-bottom:none; }
+
+    h2{
+      margin: 8px 0 8px 0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    h3{
+      margin: 14px 0 8px;
+      font-size: 15px;
+      color: color-mix(in srgb, var(--text) 92%, var(--muted));
+    }
+    p{ margin: 10px 0; color: var(--text); }
+    .muted{ color: var(--muted); }
+    .note{
+      margin: 12px 0;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+      background: color-mix(in srgb, var(--panel2) 84%, transparent);
+    }
+    .note strong{
+      color: var(--accent);
+      font-weight: 650;
+    }
+    ul{
+      margin: 8px 0 12px 22px;
+      padding: 0;
+    }
+    li{ margin: 6px 0; color: var(--text); }
+    code.inline{
+      font-family: var(--mono);
+      font-size: .95em;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: var(--code);
+      border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+      color: color-mix(in srgb, var(--text) 92%, var(--muted));
+    }
+
+    footer{
+      padding: 16px 26px 22px;
+      border-top: 1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 88%, transparent);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer .row{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media (max-width: 980px){
+      .wrap{ grid-template-columns: 1fr; }
+      aside{
+        position: relative;
+        top: 0;
+        max-height: none;
+      }
+      .search{ width: min(520px, 100%); }
+    }
+
+    @media print{
+      .topbar, aside, .actions{ display:none !important; }
+      body{ background:#fff; color:#000; }
+      main{ box-shadow:none; border:1px solid #ddd; }
+      a{ color:#000; text-decoration: underline; }
+    }
+
+    mark{
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      color: inherit;
+      padding: 0 .15em;
+      border-radius: .35em;
+      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar" role="banner">
+    <div class="inner">
+      <div class="brand" aria-label="Document header">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brand-title">
+          <strong>Wally, officially known as Watch My Wallet</strong>
+          <span>Terms of Service</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <div class="search" role="search">
+          <span class="icon" aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Search in these terms… (Ctrl/⌘ + K)" autocomplete="off" />
+        </div>
+        <button class="btn" id="printBtn" type="button" title="Print">
+          <span aria-hidden="true">⎙</span>
+          <span>Print</span>
+          <small class="kbd">P</small>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <aside aria-label="Table of contents">
+      <nav class="toc">
+        <h2>Contents</h2>
+        <a href="#top"><span class="num">—</span><span class="label">Overview</span></a>
+        <hr />
+        <a href="#s1"><span class="num">1</span><span class="label">Description of Service</span></a>
+        <a href="#s2"><span class="num">2</span><span class="label">User Accounts</span></a>
+        <a href="#s3"><span class="num">3</span><span class="label">Licence to Use</span></a>
+        <a href="#s4"><span class="num">4</span><span class="label">Subscriptions and Payments</span></a>
+        <a href="#s5"><span class="num">5</span><span class="label">Prohibited Uses</span></a>
+        <a href="#s6"><span class="num">6</span><span class="label">Data and Aggregated Information</span></a>
+        <a href="#s7"><span class="num">7</span><span class="label">Third-Party Services</span></a>
+        <a href="#s8"><span class="num">8</span><span class="label">Disclaimer of Warranties</span></a>
+        <a href="#s9"><span class="num">9</span><span class="label">Limitation of Liability</span></a>
+        <a href="#s10"><span class="num">10</span><span class="label">Indemnification</span></a>
+        <a href="#s11"><span class="num">11</span><span class="label">Changes to Service</span></a>
+        <a href="#s12"><span class="num">12</span><span class="label">Termination</span></a>
+        <a href="#s13"><span class="num">13</span><span class="label">Governing Law</span></a>
+        <a href="#s14"><span class="num">14</span><span class="label">Contact</span></a>
+
+        <div class="mini" aria-label="Quick facts">
+          <span class="pill"><b>Effective</b> 2026-02-13</span>
+          <span class="pill"><b>Updated</b> 2026-02-24</span>
+        </div>
+      </nav>
+    </aside>
+
+    <main id="top" role="main">
+      <div class="hero">
+        <h1>Terms of Service</h1>
+        <div class="meta">
+          <span><strong>Effective date:</strong> 2026-02-13</span>
+          <span class="dot">•</span>
+          <span><strong>Last updated:</strong> 2026-02-24</span>
+        </div>
+        <p class="lede">
+          By downloading, installing, or using Wally, officially known as Watch My Wallet
+          (<span class="muted">the "App"</span>), you agree to be bound by these Terms.
+          If you do not agree, do not use the App. We may update these Terms at any time;
+          continued use after changes constitutes acceptance.
+        </p>
+      </div>
+
+      <div class="content" id="doc">
+        <section id="s1">
+          <h2>1. Description of Service</h2>
+          <p>
+            Wally (Watch My Wallet) is a personal finance tracking app. It lets you record income,
+            expenses, and transfers; manage wallets in 40+ currencies; view exchange rates; schedule
+            recurring transactions; analyse spending; manage multiple profiles; and optionally back up
+            data via Google Drive.
+          </p>
+          <div class="note">
+            <strong>Important:</strong> The App is not a financial advisory service, investment platform,
+            banking application, or any regulated financial product.
+          </div>
+        </section>
+
+        <section id="s2">
+          <h2>2. User Accounts</h2>
+
+          <h3>2.1 Authentication</h3>
+          <p>
+            We use Firebase Authentication (Google) for sign-in. By creating an account you also agree
+            to Google’s Terms of Service.
+          </p>
+
+          <h3>2.2 Your Responsibility</h3>
+          <p>
+            You are solely responsible for the security of your Google account credentials and any
+            passphrase you set in the App. We are not responsible for losses arising from unauthorised
+            access to your account.
+          </p>
+        </section>
+
+        <section id="s3">
+          <h2>3. Licence to Use</h2>
+          <p>
+            We grant you a limited, non-exclusive, non-transferable, revocable licence to use the App
+            on your personal devices for personal, non-commercial purposes.
+          </p>
+          <p>
+            You must not reverse-engineer, copy, modify, or commercially exploit the App without our
+            written consent.
+          </p>
+        </section>
+
+        <section id="s4">
+          <h2>4. Subscriptions and Payments</h2>
+          <p>
+            We may offer Premium subscription features in the future. Payments would be processed by
+            Google Play (Android) or the App Store (iOS) — we do not collect payment card data directly.
+          </p>
+          <p>
+            Subscriptions auto-renew until cancelled. Refund requests are governed by the applicable
+            platform’s refund policy.
+          </p>
+        </section>
+
+        <section id="s5">
+          <h2>5. Prohibited Uses</h2>
+          <p>You agree not to use the App:</p>
+          <ul>
+            <li>for any unlawful purpose</li>
+            <li>to process others’ data without consent</li>
+            <li>to circumvent security or encryption features</li>
+            <li>to scrape data via automated means</li>
+            <li>for commercial purposes without our prior written consent</li>
+          </ul>
+        </section>
+
+        <section id="s6">
+          <h2>6. Data and Aggregated Information</h2>
+          <p>All financial records you enter remain your property.</p>
+          <p>
+            We may collect and use aggregated, anonymised, de-identified data derived from user activity
+            (<span class="muted">"Aggregated Data"</span>). Aggregated Data does not identify you and is
+            not personal data under GDPR.
+          </p>
+          <p>
+            We may use or license Aggregated Data for any lawful purpose, including sharing with third
+            parties for commercial use. No compensation is owed to you for this.
+          </p>
+        </section>
+
+        <section id="s7">
+          <h2>7. Third-Party Services</h2>
+
+          <h3>Google &amp; Firebase</h3>
+          <p>
+            The App uses Firebase Authentication and the Google Drive API — all governed by Google’s
+            Terms of Service and Privacy Policy.
+          </p>
+
+          <h3>Firebase Analytics (Android only)</h3>
+          <p>
+            The Android version uses Firebase Analytics to collect anonymised usage data
+            (screen views, feature usage, anonymised amount ranges). Exact financial amounts are never sent.
+            No analytics data is collected on iOS. See our Privacy Policy for details.
+          </p>
+
+          <h3>Currency Rates — Frankfurter API</h3>
+          <p>
+            Exchange rates are sourced from Frankfurter API (<code class="inline">frankfurter.app</code>)
+            for informational convenience only. We make no warranty as to their accuracy or timeliness.
+            Do not rely on displayed rates for real financial transactions, tax reporting, or any other
+            consequential purpose.
+          </p>
+
+          <h3>Currency Rates — Central Bank of Russia (RUB only)</h3>
+          <p>
+            If you enable the Russian Ruble (RUB), the App also fetches EUR/RUB exchange rates from the
+            Central Bank of Russia (<code class="inline">cbr.ru</code>). This occurs only after you provide
+            explicit consent via an in-app prompt.
+          </p>
+          <p>
+            No personal or financial data is sent in these requests; only standard HTTP metadata
+            (IP address, device/app parameters) may be transmitted. The App has no control over
+            <code class="inline">cbr.ru</code>’s data practices or availability. You may revoke consent
+            at any time in Settings.
+          </p>
+
+          <h3>App Store Platforms</h3>
+          <p>
+            On Android, purchases are handled by Google Play; on iOS, by the Apple App Store.
+            Both are governed by their respective platform terms.
+          </p>
+        </section>
+
+        <section id="s8">
+          <h2>8. Disclaimer of Warranties</h2>
+          <p>
+            The App is provided <span class="muted">"as is"</span> and <span class="muted">"as available"</span>
+            without warranties of any kind — express or implied — including merchantability, fitness for a
+            particular purpose, or non-infringement.
+          </p>
+          <p>
+            We do not warrant that the App will be uninterrupted, error-free, or secure; that data will be
+            accurate or complete; or that defects will be corrected.
+          </p>
+          <div class="note">
+            <strong>No professional advice:</strong> The App does not provide financial, investment, tax,
+            or legal advice. You are solely responsible for all financial decisions, including any based
+            on information shown in the App.
+          </div>
+        </section>
+
+        <section id="s9">
+          <h2>9. Limitation of Liability</h2>
+          <p>
+            To the fullest extent permitted by law, we are not liable for any indirect, incidental,
+            special, consequential, or punitive damages — including loss of profits, data, or financial
+            losses from reliance on the App or its exchange rate data.
+          </p>
+          <p>
+            Our total liability for any claim shall not exceed the greater of:
+          </p>
+          <ul>
+            <li>subscription fees you paid us in the preceding 12 months, or</li>
+            <li>€10</li>
+          </ul>
+        </section>
+
+        <section id="s10">
+          <h2>10. Indemnification</h2>
+          <p>
+            You agree to defend and hold us harmless from any claims, damages, or legal costs arising
+            from your violation of these Terms, your use of the App, or financial decisions you make
+            based on information in the App.
+          </p>
+        </section>
+
+        <section id="s11">
+          <h2>11. Changes to Service</h2>
+          <p>
+            We may modify, suspend, or discontinue the App or any feature at any time with or without notice.
+            We may also remove previously free features or introduce payment for them.
+          </p>
+        </section>
+
+        <section id="s12">
+          <h2>12. Termination</h2>
+          <p>You may stop using the App at any time.</p>
+          <p>
+            We may suspend or terminate your access immediately for breach of these Terms. Upon termination
+            your licence ends, and we may delete your data per our Privacy Policy.
+          </p>
+        </section>
+
+        <section id="s13">
+          <h2>13. Governing Law</h2>
+          <p>
+            These Terms are governed by the laws of the Republic of Latvia and, where applicable, EU law.
+            You submit to the exclusive jurisdiction of Latvian courts, subject to any mandatory consumer
+            law rights in your country of residence.
+          </p>
+        </section>
+
+        <section id="s14">
+          <h2>14. Contact</h2>
+          <p><a href="mailto:support@watch-my-wallet.com">support@watch-my-wallet.com</a></p>
+        </section>
+      </div>
+
+      <footer role="contentinfo">
+        <div class="row">
+          <span>© <span id="year"></span> Wally, officially known as Watch My Wallet</span>
+          <span class="muted">Keyboard: <span class="kbd">Ctrl/⌘ + K</span> search • <span class="kbd">P</span> print</span>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+    $("#year").textContent = String(new Date().getFullYear());
+
+    $("#printBtn").addEventListener("click", () => window.print());
+
+    window.addEventListener("keydown", (e) => {
+      const key = e.key.toLowerCase();
+      const isCmdK = (key === "k") && (e.ctrlKey || e.metaKey);
+
+      if (isCmdK) {
+        e.preventDefault();
+        $("#searchInput").focus();
+      }
+
+      if (key === "p" && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        const t = e.target;
+        const typing = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
+        if (!typing) {
+          e.preventDefault();
+          window.print();
+        }
+      }
+    });
+
+    const links = $$(".toc a[href^='#s'], .toc a[href='#top']");
+    const sections = links
+      .map(a => document.getElementById(a.getAttribute("href").slice(1)))
+      .filter(Boolean);
+
+    const setActive = (id) => {
+      links.forEach(a => {
+        const on = a.getAttribute("href") === "#" + id;
+        a.style.background = on ? "color-mix(in srgb, var(--panel2) 92%, transparent)" : "";
+        a.style.borderColor = on ? "color-mix(in srgb, var(--border) 85%, transparent)" : "transparent";
+      });
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible?.target?.id) setActive(visible.target.id);
+    }, { rootMargin: "-25% 0px -65% 0px", threshold: [0.15, 0.25, 0.35, 0.5] });
+
+    sections.forEach(s => io.observe(s));
+    setActive("top");
+
+    const input = $("#searchInput");
+    const doc = $("#doc");
+    const originalHTML = doc.innerHTML;
+
+    const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    function clearMarks() {
+      doc.innerHTML = originalHTML;
+      io.disconnect();
+      const freshLinks = $$(".toc a[href^='#s'], .toc a[href='#top']");
+      const freshSections = freshLinks
+        .map(a => document.getElementById(a.getAttribute("href").slice(1)))
+        .filter(Boolean);
+      freshSections.forEach(s => io.observe(s));
+    }
+
+    function markText(query) {
+      if (!query) return;
+
+      const q = escapeRegExp(query.trim());
+      if (!q) return;
+
+      const walker = document.createTreeWalker(doc, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent) return NodeFilter.FILTER_REJECT;
+          if (["SCRIPT","STYLE"].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
+          if (parent.closest("mark")) return NodeFilter.FILTER_REJECT;
+          if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+
+      const re = new RegExp(q, "ig");
+      let firstMark = null;
+
+      nodes.forEach(node => {
+        const text = node.nodeValue;
+        if (!re.test(text)) return;
+        re.lastIndex = 0;
+
+        const frag = document.createDocumentFragment();
+        let last = 0;
+        let m;
+
+        while ((m = re.exec(text)) !== null) {
+          const start = m.index;
+          const end = start + m[0].length;
+
+          if (start > last) frag.appendChild(document.createTextNode(text.slice(last, start)));
+
+          const mark = document.createElement("mark");
+          mark.textContent = text.slice(start, end);
+          frag.appendChild(mark);
+          if (!firstMark) firstMark = mark;
+
+          last = end;
+        }
+
+        if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+
+        node.parentNode.replaceChild(frag, node);
+      });
+
+      if (firstMark) {
+        firstMark.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+
+    let searchTimer = null;
+    input.addEventListener("input", () => {
+      window.clearTimeout(searchTimer);
+      searchTimer = window.setTimeout(() => {
+        clearMarks();
+        markText(input.value);
+      }, 120);
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        input.value = "";
+        clearMarks();
+        input.blur();
+      }
+    });
+  </script>
+</body>
+</html>
