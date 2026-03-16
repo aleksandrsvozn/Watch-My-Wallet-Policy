@@ -5,75 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <title>Terms of Service — Wally, officially known as Watch My Wallet</title>
-  <meta
-    name="description"
-    content="Terms of Service for Wally, officially known as Watch My Wallet. Effective Date: 2026-02-13. Last Updated: 2026-02-24."
-  />
-
+  <meta name="description" content="Terms of Service for Wally, officially known as Watch My Wallet. Effective Date: 2026-02-13. Last Updated: 2026-03-16." />
   <style>
     :root{
-      --bg: #0b0c0f;
-      --panel: rgba(255,255,255,.06);
-      --panel2: rgba(255,255,255,.08);
+      --bg: #0E0E0E;
+      --panel: rgba(255,255,255,.05);
+      --panel2: rgba(255,255,255,.07);
       --text: rgba(255,255,255,.88);
-      --muted: rgba(255,255,255,.62);
-      --faint: rgba(255,255,255,.42);
-      --border: rgba(255,255,255,.12);
-      --shadow: 0 16px 60px rgba(0,0,0,.45);
-      --accent: #ff8a3d;
-      --accent2:#ffd2b8;
-      --link: #ffd2b8;
-      --code: rgba(255,255,255,.10);
+      --muted: rgba(255,255,255,.58);
+      --faint: rgba(255,255,255,.38);
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 16px 60px rgba(0,0,0,.50);
+      --accent: #F86D0B;
+      --accent2: #FFE09B;
+      --link: #FFE09B;
+      --code: rgba(255,255,255,.08);
       --radius: 18px;
       --radius2: 22px;
       --max: 1120px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-
       --tocW: 320px;
       --topbarH: 62px;
+      --surface: #201F1F;
+      --surface-high: #2A2A29;
+      --surface-highest: #353534;
+      --surface-variant: #4D4637;
+      --h3-color: #FFE09B;
     }
-
     @media (prefers-color-scheme: light){
       :root{
-        --bg: #ffffff;
-        --panel: rgba(0,0,0,.04);
-        --panel2: rgba(0,0,0,.06);
+        --bg: #F7F3F2;
+        --panel: rgba(0,0,0,.03);
+        --panel2: rgba(0,0,0,.05);
         --text: rgba(0,0,0,.86);
-        --muted: rgba(0,0,0,.62);
-        --faint: rgba(0,0,0,.45);
-        --border: rgba(0,0,0,.12);
-        --shadow: 0 14px 50px rgba(0,0,0,.10);
-        --accent: #d85b12;
-        --accent2:#ffefe6;
-        --link: #b4480e;
-        --code: rgba(0,0,0,.06);
+        --muted: rgba(0,0,0,.58);
+        --faint: rgba(0,0,0,.40);
+        --border: rgba(0,0,0,.10);
+        --shadow: 0 14px 50px rgba(0,0,0,.08);
+        --accent: #F86D0B;
+        --accent2: #FFE09B;
+        --link: #C05A08;
+        --code: rgba(0,0,0,.05);
+        --surface: #FCFDFF;
+        --surface-high: #EBE7E7;
+        --surface-highest: #E6E2E1;
+        --surface-variant: #ECE1CE;
+        --h3-color: #B8520A;
       }
     }
-
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family: var(--sans);
       background:
-        radial-gradient(1200px 600px at 15% -10%, rgba(255,138,61,.18), transparent 60%),
-        radial-gradient(900px 500px at 95% 10%, rgba(255,210,184,.12), transparent 55%),
+        radial-gradient(1100px 500px at 10% -8%, rgba(248,109,11,.12), transparent 55%),
+        radial-gradient(800px 400px at 90% 8%, rgba(255,224,155,.10), transparent 50%),
         var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
+      font-size: 14.5px;
     }
-
     a{ color: var(--link); text-decoration: none; }
     a:hover{ text-decoration: underline; text-underline-offset: 3px; }
 
+    /* Top bar */
     .topbar{
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: color-mix(in srgb, var(--bg) 75%, transparent);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
       border-bottom: 1px solid var(--border);
       height: var(--topbarH);
       display:flex;
@@ -95,17 +99,11 @@
       min-width: 0;
     }
     .logo{
-      width: 34px;
-      height: 34px;
+      width: 34px; height: 34px;
       border-radius: 12px;
-      background: linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--accent) 88%, white),
-        color-mix(in srgb, var(--accent2) 55%, transparent)
-      );
-      box-shadow: 0 8px 20px rgba(0,0,0,.18);
-      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      box-shadow: 0 4px 14px rgba(248,109,11,.30);
       flex: 0 0 auto;
+      overflow: hidden;
     }
     .brand-title{
       display:flex;
@@ -127,7 +125,6 @@
       overflow:hidden;
       text-overflow: ellipsis;
     }
-
     .actions{
       display:flex;
       gap: 10px;
@@ -144,10 +141,15 @@
       padding: 10px 12px 10px 40px;
       border-radius: 14px;
       border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--panel) 90%, transparent);
+      background: var(--surface);
       color: var(--text);
       outline: none;
       box-shadow: none;
+      font-size: 14px;
+    }
+    .search input:focus{
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(248,109,11,.18);
     }
     .search input::placeholder{ color: var(--faint); }
     .search .icon{
@@ -165,15 +167,16 @@
       padding: 0 12px;
       border-radius: 14px;
       border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--panel) 90%, transparent);
+      background: var(--surface);
       color: var(--text);
       cursor:pointer;
       display:inline-flex;
       align-items:center;
       gap: 8px;
       user-select:none;
+      font-size: 14px;
     }
-    .btn:hover{ background: color-mix(in srgb, var(--panel2) 85%, transparent); }
+    .btn:hover{ background: var(--surface-high); }
     .btn:active{ transform: translateY(1px); }
     .btn small{ color: var(--muted); font-size: 12px; }
     .kbd{
@@ -182,10 +185,11 @@
       padding: 2px 7px;
       border-radius: 9px;
       border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--code) 70%, transparent);
+      background: var(--code);
       color: var(--muted);
     }
 
+    /* Layout */
     .wrap{
       width: min(var(--max), 100%);
       margin: 0 auto;
@@ -196,6 +200,7 @@
       align-items:start;
     }
 
+    /* TOC */
     aside{
       position: sticky;
       top: calc(var(--topbarH) + 18px);
@@ -203,7 +208,7 @@
       overflow:auto;
       border-radius: var(--radius2);
       border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--panel) 92%, transparent);
+      background: var(--surface);
       box-shadow: var(--shadow);
     }
     .toc{
@@ -211,28 +216,32 @@
     }
     .toc h2{
       margin: 0 0 10px 0;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--muted);
-      letter-spacing: .12em;
+      letter-spacing: .14em;
       text-transform: uppercase;
+      font-weight: 600;
     }
     .toc a{
       display:block;
-      padding: 8px 10px;
+      padding: 7px 10px;
       border-radius: 12px;
       color: var(--text);
       border: 1px solid transparent;
+      font-size: 13px;
+      transition: background .15s, border-color .15s;
     }
     .toc a:hover{
-      background: color-mix(in srgb, var(--panel2) 90%, transparent);
+      background: var(--surface-high);
       text-decoration:none;
-      border-color: color-mix(in srgb, var(--border) 70%, transparent);
+      border-color: var(--border);
     }
     .toc a .num{
       font-family: var(--mono);
-      font-size: 12px;
-      color: var(--muted);
+      font-size: 11px;
+      color: var(--accent);
       margin-right: 8px;
+      font-weight: 600;
     }
     .toc a .label{
       font-size: 13px;
@@ -240,55 +249,52 @@
     .toc hr{
       border: none;
       border-top: 1px solid var(--border);
-      margin: 10px 0;
-      opacity: .9;
+      margin: 8px 0;
     }
     .toc .mini{
       display:flex;
       gap: 10px;
       padding: 10px;
       border-radius: 14px;
-      background: color-mix(in srgb, var(--panel2) 80%, transparent);
-      border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+      background: var(--surface-high);
+      border: 1px solid var(--border);
       margin-top: 10px;
-      flex-wrap: wrap;
     }
     .pill{
       display:inline-flex;
       align-items:center;
-      gap: 8px;
-      padding: 7px 10px;
+      gap: 6px;
+      padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--panel) 90%, transparent);
+      background: var(--surface);
       color: var(--text);
       font-size: 12px;
       white-space: nowrap;
     }
-    .pill b{
-      color: var(--accent);
-      font-weight: 650;
-    }
+    .pill b{ color: var(--accent); font-weight: 650; }
 
+    /* Main content */
     main{
       border-radius: var(--radius2);
       border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--panel) 88%, transparent);
+      background: var(--surface);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
     .hero{
-      padding: 26px 26px 20px;
+      padding: 28px 28px 22px;
       border-bottom: 1px solid var(--border);
       background:
-        radial-gradient(900px 300px at 20% 0%, rgba(255,138,61,.14), transparent 55%),
-        radial-gradient(700px 280px at 100% 40%, rgba(255,210,184,.10), transparent 55%),
+        radial-gradient(800px 260px at 15% 0%, rgba(248,109,11,.10), transparent 50%),
+        radial-gradient(600px 240px at 95% 30%, rgba(255,224,155,.08), transparent 50%),
         transparent;
     }
     .hero h1{
       margin: 0 0 10px 0;
       font-size: 28px;
       letter-spacing: -0.02em;
+      font-weight: 700;
     }
     .meta{
       display:flex;
@@ -304,40 +310,39 @@
       color: var(--text);
       max-width: 78ch;
       font-size: 14.5px;
+      line-height: 1.7;
     }
     .content{
-      padding: 18px 26px 30px;
+      padding: 18px 28px 30px;
     }
     section{
       scroll-margin-top: calc(var(--topbarH) + 18px);
-      padding: 10px 0 8px;
-      border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+      padding: 12px 0 10px;
+      border-bottom: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
     }
     section:last-child{ border-bottom:none; }
-
     h2{
-      margin: 8px 0 8px 0;
+      margin: 8px 0 10px 0;
       font-size: 18px;
       letter-spacing: -0.01em;
+      font-weight: 650;
     }
     h3{
-      margin: 14px 0 8px;
+      margin: 16px 0 8px;
       font-size: 15px;
-      color: color-mix(in srgb, var(--text) 92%, var(--muted));
+      color: var(--h3-color);
+      font-weight: 600;
     }
     p{ margin: 10px 0; color: var(--text); }
     .muted{ color: var(--muted); }
     .note{
-      margin: 12px 0;
-      padding: 12px 14px;
+      margin: 14px 0;
+      padding: 14px 16px;
       border-radius: 16px;
-      border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
-      background: color-mix(in srgb, var(--panel2) 84%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--border));
+      background: color-mix(in srgb, var(--accent) 4%, var(--surface-high));
     }
-    .note strong{
-      color: var(--accent);
-      font-weight: 650;
-    }
+    .note strong{ color: var(--accent); font-weight: 650; }
     ul{
       margin: 8px 0 12px 22px;
       padding: 0;
@@ -345,18 +350,19 @@
     li{ margin: 6px 0; color: var(--text); }
     code.inline{
       font-family: var(--mono);
-      font-size: .95em;
-      padding: 2px 6px;
+      font-size: .92em;
+      padding: 2px 7px;
       border-radius: 10px;
       background: var(--code);
-      border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
-      color: color-mix(in srgb, var(--text) 92%, var(--muted));
+      border: 1px solid var(--border);
+      color: var(--accent2);
     }
 
+    /* Footer */
     footer{
-      padding: 16px 26px 22px;
+      padding: 16px 28px 22px;
       border-top: 1px solid var(--border);
-      background: color-mix(in srgb, var(--panel) 88%, transparent);
+      background: var(--surface-high);
       color: var(--muted);
       font-size: 13px;
     }
@@ -368,6 +374,7 @@
       align-items: center;
     }
 
+    /* Mobile */
     @media (max-width: 980px){
       .wrap{ grid-template-columns: 1fr; }
       aside{
@@ -376,8 +383,12 @@
         max-height: none;
       }
       .search{ width: min(520px, 100%); }
+      .hero{ padding: 22px 18px 18px; }
+      .content{ padding: 14px 18px 24px; }
+      footer{ padding: 14px 18px 18px; }
     }
 
+    /* Print */
     @media print{
       .topbar, aside, .actions{ display:none !important; }
       body{ background:#fff; color:#000; }
@@ -385,34 +396,41 @@
       a{ color:#000; text-decoration: underline; }
     }
 
+    /* Highlight (search) */
     mark{
-      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      background: color-mix(in srgb, var(--accent) 25%, transparent);
       color: inherit;
       padding: 0 .15em;
       border-radius: .35em;
-      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
     }
   </style>
 </head>
-
 <body>
   <header class="topbar" role="banner">
     <div class="inner">
       <div class="brand" aria-label="Document header">
-        <div class="logo" aria-hidden="true"></div>
+        <svg class="logo" viewBox="0 0 24 24" aria-hidden="true">
+          <rect width="24" height="24" rx="6" fill="url(#logoBg)"/>
+          <defs><linearGradient id="logoBg" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#FEBE7A"/><stop offset="100%" stop-color="#F86D0B"/></linearGradient></defs>
+          <path d="m13.795,6.208c-0.148,-0.258 -0.352,-0.538 -0.529,-0.776 -0.108,-0.144 -0.24,-0.296 -0.377,-0.414 -0.49,-0.419 -0.984,-0.246 -1.483,0.03 -0.627,0.347 -7.441,4.146 -7.256,4.108 2.622,-0.543 4.939,-1.122 7.591,-2.043 2.08,-0.722 2.054,-0.906 2.054,-0.906z" fill="#fffdfc"/>
+          <path d="M16.813,7.21C16.71,6.929 16.572,6.568 16.437,6.302C16.354,6.14 16.245,5.941 16.129,5.801C15.716,5.3 15.23,5.404 14.693,5.585C14.018,5.813 5.408,8.709 5.597,8.704C8.27,8.645 11.916,8.105 14.68,7.68C16.849,7.347 16.813,7.21 16.813,7.21Z" fill="#CC6E34"/>
+          <path d="M20.243,16.174C20.243,17.43 19.353,18.775 17.833,19.051L5.623,19.03C4.36,18.916 3.103,17.819 2.94,16.175L2.908,9.291C2.908,8.763 2.929,7.874 2.935,7.319C3.12,7.547 3.566,8.516 5.138,8.669C6.613,8.813 9.304,8.347 11.676,7.992C13.431,7.729 14.978,7.486 15.337,7.437C15.749,7.38 16.334,7.274 16.745,7.213C17.55,7.093 18.304,6.949 18.942,7.204C19.16,7.303 19.36,7.438 19.534,7.603C19.671,7.743 19.818,7.898 19.937,8.11C20.045,8.301 20.138,8.474 20.181,8.694C20.288,9.247 20.255,10.486 20.255,10.486L20.243,16.174Z" fill="#FFFDFC"/>
+          <path d="M20.031,10.58C20.285,10.582 20.916,10.677 20.933,11.355C20.96,12.423 20.924,13.397 20.941,13.782C20.959,14.203 20.712,14.603 20.136,14.59C20.029,14.587 16.215,14.583 15.694,14.557C14.947,14.521 13.944,14.034 13.946,12.597C13.947,11.199 14.844,10.656 15.787,10.601C16.178,10.578 18.715,10.57 20.031,10.58Z" fill="#C16A35"/>
+          <path d="M15.446,12.555C15.446,13.197 16.111,13.598 16.643,13.277C16.89,13.128 17.042,12.853 17.042,12.555C17.042,11.913 16.377,11.512 15.845,11.833C15.598,11.982 15.446,12.257 15.446,12.555" fill="#FDF6F4"/>
+        </svg>
         <div class="brand-title">
           <strong>Wally, officially known as Watch My Wallet</strong>
           <span>Terms of Service</span>
         </div>
       </div>
-
       <div class="actions">
         <div class="search" role="search">
-          <span class="icon" aria-hidden="true">⌕</span>
-          <input id="searchInput" type="search" placeholder="Search in these terms… (Ctrl/⌘ + K)" autocomplete="off" />
+          <span class="icon" aria-hidden="true">&#x2315;</span>
+          <input id="searchInput" type="search" placeholder="Search in these terms&#x2026; (Ctrl/&#x2318; + K)" autocomplete="off" />
         </div>
         <button class="btn" id="printBtn" type="button" title="Print">
-          <span aria-hidden="true">⎙</span>
+          <span aria-hidden="true">&#x2399;</span>
           <span>Print</span>
           <small class="kbd">P</small>
         </button>
@@ -424,7 +442,7 @@
     <aside aria-label="Table of contents">
       <nav class="toc">
         <h2>Contents</h2>
-        <a href="#top"><span class="num">—</span><span class="label">Overview</span></a>
+        <a href="#top"><span class="num">&mdash;</span><span class="label">Overview</span></a>
         <hr />
         <a href="#s1"><span class="num">1</span><span class="label">Description of Service</span></a>
         <a href="#s2"><span class="num">2</span><span class="label">User Accounts</span></a>
@@ -440,10 +458,9 @@
         <a href="#s12"><span class="num">12</span><span class="label">Termination</span></a>
         <a href="#s13"><span class="num">13</span><span class="label">Governing Law</span></a>
         <a href="#s14"><span class="num">14</span><span class="label">Contact</span></a>
-
         <div class="mini" aria-label="Quick facts">
           <span class="pill"><b>Effective</b> 2026-02-13</span>
-          <span class="pill"><b>Updated</b> 2026-02-24</span>
+          <span class="pill"><b>Updated</b> 2026-03-16</span>
         </div>
       </nav>
     </aside>
@@ -453,41 +470,45 @@
         <h1>Terms of Service</h1>
         <div class="meta">
           <span><strong>Effective date:</strong> 2026-02-13</span>
-          <span class="dot">•</span>
-          <span><strong>Last updated:</strong> 2026-02-24</span>
+          <span class="dot">&bull;</span>
+          <span><strong>Last updated:</strong> 2026-03-16</span>
         </div>
         <p class="lede">
-          By downloading, installing, or using Wally, officially known as Watch My Wallet
-          (<span class="muted">the "App"</span>), you agree to be bound by these Terms.
+          Wally, officially known as Watch My Wallet (<span class="muted">"App"</span>) is operated by Aleksandrs Voz&#x0146;arskis
+          (<a href="mailto:support@watch-my-wallet.com">support@watch-my-wallet.com</a>). Latvia, EU.
+          By downloading, installing, or using the App, you agree to be bound by these Terms.
           If you do not agree, do not use the App. We may update these Terms at any time;
           continued use after changes constitutes acceptance.
         </p>
       </div>
 
       <div class="content" id="doc">
+
+        <!-- 1. Description of Service -->
         <section id="s1">
           <h2>1. Description of Service</h2>
           <p>
             Wally (Watch My Wallet) is a personal finance tracking app. It lets you record income,
-            expenses, and transfers; manage wallets in 40+ currencies; view exchange rates; schedule
-            recurring transactions; analyse spending; manage multiple profiles; and optionally back up
-            data via Google Drive.
+            expenses, and transfers; manage wallets in 260+ currencies including 90+ cryptocurrencies;
+            view exchange rates; schedule recurring transactions; analyse spending; manage multiple
+            profiles; and optionally back up data via Google Drive.
           </p>
           <div class="note">
             <strong>Important:</strong> The App is not a financial advisory service, investment platform,
-            banking application, or any regulated financial product.
+            banking application, or any regulated financial product. Cryptocurrency tracking is limited
+            to user-entered amounts and exchange rate display &mdash; the App does not interact with
+            blockchains, wallets, or exchanges.
           </div>
         </section>
 
+        <!-- 2. User Accounts -->
         <section id="s2">
           <h2>2. User Accounts</h2>
-
           <h3>2.1 Authentication</h3>
           <p>
             We use Firebase Authentication (Google) for sign-in. By creating an account you also agree
-            to Google’s Terms of Service.
+            to Google's Terms of Service.
           </p>
-
           <h3>2.2 Your Responsibility</h3>
           <p>
             You are solely responsible for the security of your Google account credentials and any
@@ -496,6 +517,7 @@
           </p>
         </section>
 
+        <!-- 3. Licence to Use -->
         <section id="s3">
           <h2>3. Licence to Use</h2>
           <p>
@@ -508,30 +530,33 @@
           </p>
         </section>
 
+        <!-- 4. Subscriptions and Payments -->
         <section id="s4">
           <h2>4. Subscriptions and Payments</h2>
           <p>
             We may offer Premium subscription features in the future. Payments would be processed by
-            Google Play (Android) or the App Store (iOS) — we do not collect payment card data directly.
+            Google Play (Android) or the App Store (iOS) &mdash; we do not collect payment card data directly.
           </p>
           <p>
             Subscriptions auto-renew until cancelled. Refund requests are governed by the applicable
-            platform’s refund policy.
+            platform's refund policy.
           </p>
         </section>
 
+        <!-- 5. Prohibited Uses -->
         <section id="s5">
           <h2>5. Prohibited Uses</h2>
           <p>You agree not to use the App:</p>
           <ul>
             <li>for any unlawful purpose</li>
-            <li>to process others’ data without consent</li>
+            <li>to process others' data without consent</li>
             <li>to circumvent security or encryption features</li>
             <li>to scrape data via automated means</li>
             <li>for commercial purposes without our prior written consent</li>
           </ul>
         </section>
 
+        <!-- 6. Data and Aggregated Information -->
         <section id="s6">
           <h2>6. Data and Aggregated Information</h2>
           <p>All financial records you enter remain your property.</p>
@@ -546,41 +571,46 @@
           </p>
         </section>
 
+        <!-- 7. Third-Party Services -->
         <section id="s7">
           <h2>7. Third-Party Services</h2>
 
           <h3>Google &amp; Firebase</h3>
           <p>
-            The App uses Firebase Authentication and the Google Drive API — all governed by Google’s
+            The App uses Firebase Authentication and the Google Drive API &mdash; all governed by Google's
             Terms of Service and Privacy Policy.
           </p>
 
-          <h3>Firebase Analytics (Android only)</h3>
+          <h3>Firebase Analytics</h3>
           <p>
-            The Android version uses Firebase Analytics to collect anonymised usage data
-            (screen views, feature usage, anonymised amount ranges). Exact financial amounts are never sent.
-            No analytics data is collected on iOS. See our Privacy Policy for details.
+            Both the Android and iOS versions of the App use Firebase Analytics to collect anonymised
+            usage data (screen views, feature usage, anonymised amount ranges). Exact financial amounts
+            are never sent. See our Privacy Policy for details.
           </p>
 
-          <h3>Currency Rates — Frankfurter API</h3>
+          <h3>Firebase Crashlytics</h3>
           <p>
-            Exchange rates are sourced from Frankfurter API (<code class="inline">frankfurter.app</code>)
-            for informational convenience only. We make no warranty as to their accuracy or timeliness.
-            Do not rely on displayed rates for real financial transactions, tax reporting, or any other
-            consequential purpose.
+            Both platforms use Firebase Crashlytics to collect crash reports, non-fatal error logs,
+            and performance diagnostics. This data is not linked to your personal identity and is used
+            solely for app stability monitoring and bug fixing.
           </p>
 
-          <h3>Currency Rates — Central Bank of Russia (RUB only)</h3>
+          <h3>Currency Rates</h3>
           <p>
-            If you enable the Russian Ruble (RUB), the App also fetches EUR/RUB exchange rates from the
-            Central Bank of Russia (<code class="inline">cbr.ru</code>). This occurs only after you provide
-            explicit consent via an in-app prompt.
+            Exchange rates are sourced from two open-source services, called in parallel:
+          </p>
+          <ul>
+            <li><strong>Currency API</strong> (<code class="inline">cdn.jsdelivr.net/npm/@fawazahmed0/currency-api</code> with fallback to <code class="inline">currency-api.pages.dev</code>) &mdash; provides rates for 149+ fiat and cryptocurrency pairs</li>
+            <li><strong>Frankfurter API</strong> (<code class="inline">api.frankfurter.app</code>) &mdash; provides fiat currency rates sourced from the European Central Bank</li>
+          </ul>
+          <p>
+            Frankfurter rates take priority for fiat currencies where both sources overlap.
+            No personal or financial data is sent in these requests. Rates are cached locally for up to 12 hours.
           </p>
           <p>
-            No personal or financial data is sent in these requests; only standard HTTP metadata
-            (IP address, device/app parameters) may be transmitted. The App has no control over
-            <code class="inline">cbr.ru</code>’s data practices or availability. You may revoke consent
-            at any time in Settings.
+            We make no warranty as to the accuracy or timeliness of displayed rates, including
+            cryptocurrency rates. Do not rely on them for real financial transactions, tax reporting,
+            or any other consequential purpose.
           </p>
 
           <h3>App Store Platforms</h3>
@@ -590,11 +620,12 @@
           </p>
         </section>
 
+        <!-- 8. Disclaimer of Warranties -->
         <section id="s8">
           <h2>8. Disclaimer of Warranties</h2>
           <p>
             The App is provided <span class="muted">"as is"</span> and <span class="muted">"as available"</span>
-            without warranties of any kind — express or implied — including merchantability, fitness for a
+            without warranties of any kind &mdash; express or implied &mdash; including merchantability, fitness for a
             particular purpose, or non-infringement.
           </p>
           <p>
@@ -608,11 +639,12 @@
           </div>
         </section>
 
+        <!-- 9. Limitation of Liability -->
         <section id="s9">
           <h2>9. Limitation of Liability</h2>
           <p>
             To the fullest extent permitted by law, we are not liable for any indirect, incidental,
-            special, consequential, or punitive damages — including loss of profits, data, or financial
+            special, consequential, or punitive damages &mdash; including loss of profits, data, or financial
             losses from reliance on the App or its exchange rate data.
           </p>
           <p>
@@ -620,10 +652,11 @@
           </p>
           <ul>
             <li>subscription fees you paid us in the preceding 12 months, or</li>
-            <li>€10</li>
+            <li>&euro;10</li>
           </ul>
         </section>
 
+        <!-- 10. Indemnification -->
         <section id="s10">
           <h2>10. Indemnification</h2>
           <p>
@@ -633,6 +666,7 @@
           </p>
         </section>
 
+        <!-- 11. Changes to Service -->
         <section id="s11">
           <h2>11. Changes to Service</h2>
           <p>
@@ -641,6 +675,7 @@
           </p>
         </section>
 
+        <!-- 12. Termination -->
         <section id="s12">
           <h2>12. Termination</h2>
           <p>You may stop using the App at any time.</p>
@@ -650,6 +685,7 @@
           </p>
         </section>
 
+        <!-- 13. Governing Law -->
         <section id="s13">
           <h2>13. Governing Law</h2>
           <p>
@@ -659,16 +695,18 @@
           </p>
         </section>
 
+        <!-- 14. Contact -->
         <section id="s14">
           <h2>14. Contact</h2>
           <p><a href="mailto:support@watch-my-wallet.com">support@watch-my-wallet.com</a></p>
         </section>
+
       </div>
 
       <footer role="contentinfo">
         <div class="row">
-          <span>© <span id="year"></span> Wally, officially known as Watch My Wallet</span>
-          <span class="muted">Keyboard: <span class="kbd">Ctrl/⌘ + K</span> search • <span class="kbd">P</span> print</span>
+          <span>&copy; <span id="year"></span> Wally, officially known as Watch My Wallet</span>
+          <span class="muted">Keyboard: <span class="kbd">Ctrl/&#x2318; + K</span> search &bull; <span class="kbd">P</span> print</span>
         </div>
       </footer>
     </main>
@@ -677,140 +715,92 @@
   <script>
     const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-
     $("#year").textContent = String(new Date().getFullYear());
-
     $("#printBtn").addEventListener("click", () => window.print());
-
     window.addEventListener("keydown", (e) => {
       const key = e.key.toLowerCase();
-      const isCmdK = (key === "k") && (e.ctrlKey || e.metaKey);
-
-      if (isCmdK) {
+      if (key === "k" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         $("#searchInput").focus();
       }
-
       if (key === "p" && !e.ctrlKey && !e.metaKey && !e.altKey) {
         const t = e.target;
-        const typing = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
-        if (!typing) {
-          e.preventDefault();
-          window.print();
-        }
+        if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+        e.preventDefault();
+        window.print();
       }
     });
-
     const links = $$(".toc a[href^='#s'], .toc a[href='#top']");
-    const sections = links
-      .map(a => document.getElementById(a.getAttribute("href").slice(1)))
-      .filter(Boolean);
-
+    const sections = links.map(a => document.getElementById(a.getAttribute("href").slice(1))).filter(Boolean);
     const setActive = (id) => {
       links.forEach(a => {
         const on = a.getAttribute("href") === "#" + id;
-        a.style.background = on ? "color-mix(in srgb, var(--panel2) 92%, transparent)" : "";
-        a.style.borderColor = on ? "color-mix(in srgb, var(--border) 85%, transparent)" : "transparent";
+        a.style.background = on ? "var(--surface-high)" : "";
+        a.style.borderColor = on ? "var(--border)" : "transparent";
       });
     };
-
     const io = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      const visible = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (visible?.target?.id) setActive(visible.target.id);
     }, { rootMargin: "-25% 0px -65% 0px", threshold: [0.15, 0.25, 0.35, 0.5] });
-
     sections.forEach(s => io.observe(s));
     setActive("top");
-
     const input = $("#searchInput");
     const doc = $("#doc");
     const originalHTML = doc.innerHTML;
-
     const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
     function clearMarks() {
       doc.innerHTML = originalHTML;
       io.disconnect();
-      const freshLinks = $$(".toc a[href^='#s'], .toc a[href='#top']");
-      const freshSections = freshLinks
+      $$(".toc a[href^='#s'], .toc a[href='#top']")
         .map(a => document.getElementById(a.getAttribute("href").slice(1)))
-        .filter(Boolean);
-      freshSections.forEach(s => io.observe(s));
+        .filter(Boolean)
+        .forEach(s => io.observe(s));
     }
-
     function markText(query) {
       if (!query) return;
-
       const q = escapeRegExp(query.trim());
       if (!q) return;
-
       const walker = document.createTreeWalker(doc, NodeFilter.SHOW_TEXT, {
         acceptNode(node) {
-          const parent = node.parentElement;
-          if (!parent) return NodeFilter.FILTER_REJECT;
-          if (["SCRIPT","STYLE"].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
-          if (parent.closest("mark")) return NodeFilter.FILTER_REJECT;
-          if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          const p = node.parentElement;
+          if (!p) return NodeFilter.FILTER_REJECT;
+          if (["SCRIPT", "STYLE"].includes(p.tagName)) return NodeFilter.FILTER_REJECT;
+          if (p.closest("mark")) return NodeFilter.FILTER_REJECT;
+          if (!node.nodeValue?.trim()) return NodeFilter.FILTER_REJECT;
           return NodeFilter.FILTER_ACCEPT;
         }
       });
-
       const nodes = [];
       while (walker.nextNode()) nodes.push(walker.currentNode);
-
       const re = new RegExp(q, "ig");
       let firstMark = null;
-
       nodes.forEach(node => {
         const text = node.nodeValue;
         if (!re.test(text)) return;
         re.lastIndex = 0;
-
         const frag = document.createDocumentFragment();
-        let last = 0;
-        let m;
-
+        let last = 0, m;
         while ((m = re.exec(text)) !== null) {
-          const start = m.index;
-          const end = start + m[0].length;
-
-          if (start > last) frag.appendChild(document.createTextNode(text.slice(last, start)));
-
+          if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
           const mark = document.createElement("mark");
-          mark.textContent = text.slice(start, end);
+          mark.textContent = text.slice(m.index, m.index + m[0].length);
           frag.appendChild(mark);
           if (!firstMark) firstMark = mark;
-
-          last = end;
+          last = m.index + m[0].length;
         }
-
         if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
-
         node.parentNode.replaceChild(frag, node);
       });
-
-      if (firstMark) {
-        firstMark.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+      if (firstMark) firstMark.scrollIntoView({ behavior: "smooth", block: "center" });
     }
-
     let searchTimer = null;
     input.addEventListener("input", () => {
-      window.clearTimeout(searchTimer);
-      searchTimer = window.setTimeout(() => {
-        clearMarks();
-        markText(input.value);
-      }, 120);
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => { clearMarks(); markText(input.value); }, 120);
     });
-
     input.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        input.value = "";
-        clearMarks();
-        input.blur();
-      }
+      if (e.key === "Escape") { input.value = ""; clearMarks(); input.blur(); }
     });
   </script>
 </body>
